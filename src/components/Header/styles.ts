@@ -76,7 +76,7 @@ export const StyledLogo = styled.div`
   }
   
   span {
-    background: ${({ theme }) => theme.colors.gradients.primary};
+    background: ${({ theme }) => theme.colors.neutral.dark};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

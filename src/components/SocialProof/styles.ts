@@ -380,6 +380,7 @@ export const TrustSealIcon = styled.div`
 export const TrustSealText = styled.p`
   font-size: ${({ theme }) => theme.typography.fontSize.lg};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
+  color: ${({ theme }) => theme.colors.primary.contrast};
   margin: 0;
   
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
