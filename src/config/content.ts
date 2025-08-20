@@ -164,35 +164,36 @@ export interface ContentConfig {
  */
 export const defaultContent: ContentConfig = {
   site: {
-    title: 'Landing Page Template',
-    description: 'Template moderno e responsivo para criação de landing pages eficazes',
-    keywords: ['landing page', 'template', 'react', 'typescript', 'conversão'],
-    author: 'Seu Nome',
+    title: 'Criação de Landing Pages Profissionais',
+    description: 'Landing pages rápidas, modernas e pensadas para conversão. Mostre sua ideia com clareza e conquiste mais clientes.',
+    keywords: ['landing page', 'site profissional', 'conversão', 'marketing digital', 'negócios online'],
+    author: 'Luis Henrique',
     url: 'https://seusite.com',
   },
   
   header: {
     logo: {
-      text: 'SeuLogo',
+      text: 'HenriqueDev',
     },
     navigation: [
       { label: 'Início', href: '#hero' },
       { label: 'Benefícios', href: '#benefits' },
+      { label: 'Prova Social', href: '#social-proof' },
       { label: 'Sobre', href: '#about' },
       { label: 'Contato', href: '#contact' },
     ],
     cta: {
-      text: 'Começar Agora',
+      text: 'Solicitar Orçamento',
       href: '#contact',
     },
   },
   
   hero: {
-    title: 'Transforme Suas Ideias em Realidade',
-    subtitle: 'A Solução Que Você Estava Procurando',
-    description: 'Descubra como nossa solução inovadora pode revolucionar seu negócio e aumentar seus resultados de forma significativa.',
+    title: 'Sua ideia merece uma página que vende',
+    subtitle: 'Landing pages que convertem de verdade',
+    description: 'Eu crio landing pages claras, rápidas e funcionais. Sem promessas milagrosas — apenas design estratégico para atrair, engajar e gerar resultados reais.',
     primaryCta: {
-      text: 'Começar Gratuitamente',
+      text: 'Quero minha landing page',
       href: '#contact',
     },
     secondaryCta: {
@@ -202,54 +203,59 @@ export const defaultContent: ContentConfig = {
   },
   
   problemSolution: {
-    title: 'Do Problema à Solução',
-    subtitle: 'Entendemos seus desafios e temos a resposta',
+    title: 'O problema e a solução',
+    subtitle: 'Por que uma landing page profissional faz diferença',
     problem: {
       title: 'O Problema',
-      description: 'Muitas empresas enfrentam dificuldades para alcançar seus objetivos devido à falta de ferramentas adequadas e estratégias eficazes.',
+      description: 'Muitos negócios perdem clientes porque usam páginas lentas, confusas ou cheias de distrações. Resultado: tráfego sem conversão.',
     },
     solution: {
-      title: 'Nossa Solução',
-      description: 'Oferecemos uma plataforma completa e intuitiva que simplifica processos complexos e acelera seus resultados.',
+      title: 'A Solução',
+      description: 'Uma landing page bem estruturada, com copy clara e design focado em resultado. É isso que eu entrego.',
     },
   },
   
   benefits: {
-    title: 'Por Que Escolher Nossa Solução?',
-    subtitle: 'Benefícios que fazem a diferença',
+    title: 'Benefícios de ter sua landing page',
+    subtitle: 'Mais que aparência, é estratégia',
     items: [
       {
         icon: 'Zap',
-        title: 'Rapidez e Eficiência',
-        description: 'Automatize processos e economize tempo valioso com nossa tecnologia avançada.',
+        title: 'Velocidade e Performance',
+        description: 'Sites rápidos que carregam em segundos.',
       },
       {
         icon: 'Shield',
-        title: 'Segurança Garantida',
-        description: 'Seus dados estão protegidos com os mais altos padrões de segurança do mercado.',
+        title: 'Design que Converte',
+        description: 'Estrutura pensada para guiar o visitante até a ação.',
       },
       {
         icon: 'TrendingUp',
-        title: 'Resultados Comprovados',
-        description: 'Aumente sua produtividade em até 300% com nossas ferramentas otimizadas.',
+        title: 'Responsividade Total',
+        description: 'Funciona em qualquer dispositivo, sem susto.',
       },
       {
         icon: 'Users',
-        title: 'Suporte Especializado',
-        description: 'Conte com nossa equipe de especialistas para te ajudar em cada etapa.',
+        title: 'SEO Básico Incluído',
+        description: 'Preparada para ser encontrada no Google.',
+      },
+            {
+        icon: 'Users',
+        title: 'Personalização Completa',
+        description: 'Cada projeto é único, feito sob medida para você.',
       },
     ],
   },
   
   socialProof: {
-    title: 'O Que Nossos Clientes Dizem',
-    subtitle: 'Histórias reais de sucesso',
+    title: 'O que dizem meus clientes',
+    subtitle: 'Resultados falam mais que palavras',
     testimonials: [
       {
         name: 'Maria Silva',
         role: 'CEO',
         company: 'TechCorp',
-        content: 'Esta solução transformou completamente nossa operação. Recomendo para qualquer empresa que busca eficiência.',
+        content: 'Minha landing page começou a gerar leads já na primeira semana. Trabalho rápido e direto.',
         rating: 5,
       },
       {
@@ -276,29 +282,29 @@ export const defaultContent: ContentConfig = {
   },
   
   about: {
-    title: 'Sobre Nossa Empresa',
-    subtitle: 'Inovação e excelência em cada projeto',
-    description: 'Somos uma empresa dedicada a fornecer soluções tecnológicas inovadoras que impulsionam o crescimento dos nossos clientes. Com anos de experiência no mercado, desenvolvemos ferramentas que realmente fazem a diferença.',
+    title: 'Quem sou eu',
+    subtitle: 'De código a conversão',
+    description: 'Sou desenvolvedor full stack especializado em criação de landing pages. Meu foco é entregar páginas rápidas, modernas e objetivas, sempre com transparência e sem enrolação.',
     features: [
       {
-        title: 'Experiência Comprovada',
-        description: 'Mais de 10 anos desenvolvendo soluções para empresas de todos os tamanhos.',
+        title: 'Experiência real',
+        description: 'Anos criando sites e sistemas para diferentes nichos.',
       },
       {
-        title: 'Tecnologia de Ponta',
-        description: 'Utilizamos as mais modernas tecnologias para garantir performance e segurança.',
+        title: 'Processo simples',
+        description: 'Você passa a ideia, eu transformo em página funcional.',
       },
       {
-        title: 'Foco no Cliente',
-        description: 'Cada solução é desenvolvida pensando nas necessidades específicas dos nossos clientes.',
+        title: 'Foco em resultado',
+        description: 'design bonito é bom, mas o que importa é converter.',
       },
     ],
   },
   
   contact: {
-    title: 'Entre em Contato',
-    subtitle: 'Pronto para começar?',
-    description: 'Fale conosco e descubra como podemos ajudar sua empresa a alcançar novos patamares.',
+    title: 'Vamos conversar?',
+    subtitle: 'Sua landing page começa aqui',
+    description: 'Entre em contato e vamos tirar sua ideia do papel.',
     form: {
       fields: [
         {
@@ -330,19 +336,18 @@ export const defaultContent: ContentConfig = {
           required: true,
         },
       ],
-      submitText: 'Enviar Mensagem',
-      successMessage: 'Mensagem enviada com sucesso! Entraremos em contato em breve.',
-      errorMessage: 'Erro ao enviar mensagem. Tente novamente.',
+      submitText: 'Enviar',
+      successMessage: 'Obrigado! Vou responder em breve.',
+      errorMessage: 'Ocorreu um erro. Tente novamente.',
     },
     info: {
-      email: 'contato@suaempresa.com',
-      phone: '(11) 99999-9999',
-      address: 'Rua Exemplo, 123 - São Paulo, SP',
+      email: 'lh5818181@gmail.com',
+      phone: '81 9 9942-9143',
     },
   },
   
   footer: {
-    description: 'Transformando ideias em soluções digitais inovadoras.',
+    description: 'Landing pages que unem design, performance e resultado.',
     links: [
       {
         title: 'Empresa',
@@ -370,12 +375,11 @@ export const defaultContent: ContentConfig = {
       },
     ],
     social: [
-      { platform: 'LinkedIn', url: 'https://linkedin.com', icon: 'Linkedin' },
-      { platform: 'Twitter', url: 'https://twitter.com', icon: 'Twitter' },
+      { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/luis-henrique-76245231a/', icon: 'Linkedin' },
       { platform: 'Instagram', url: 'https://instagram.com', icon: 'Instagram' },
       { platform: 'Facebook', url: 'https://facebook.com', icon: 'Facebook' },
     ],
-    copyright: '© 2024 Sua Empresa. Todos os direitos reservados.',
+    copyright: '© 2024 Luis Henrique Vieira de Oliveira. Todos os direitos reservados.',
   },
 };
 
