@@ -2,35 +2,30 @@
  * COMPONENTE BENEFITS ORBIT
  * 
  * Seção que apresenta os benefícios do produto/serviço em um layout
- * visual atrativo com cards organizados em órbita.
+ * de grid responsivo, focado na simplicidade e funcionalidade.
  * 
  * Funcionalidades:
- * - Layout em órbita responsivo
+ * - Layout de grid responsivo
  * - Ícones personalizáveis (Lucide React)
  * - Animações suaves
  * - Configuração via props
- * - Design adaptativo para mobile
  */
-
 
 import * as LucideIcons from 'lucide-react';
 
-// Importa tipos e estilos
+// Importa tipos e estilos do arquivo simplificado
 import type { ContentConfig } from '../../types';
 import {
   StyledSection,
   SectionContainer,
   SectionTitle,
   SectionSubtitle,
-  OrbitWrapper,
-  OrbitCenter,
-  OrbitCenterIcon,
   BenefitCard,
   BenefitIcon,
   BenefitTitle,
   BenefitDescription,
   BenefitsGrid
-} from './styles';
+} from './styles-simple'; // Importa do arquivo de estilos simplificado
 
 /**
  * Props do componente BenefitsOrbit
@@ -68,45 +63,12 @@ function BenefitsOrbit({ content }: BenefitsOrbitProps) {
           </SectionSubtitle>
         )}
         
-        {/* Layout para desktop - órbita */}
-        <OrbitWrapper className="animate-scale-in">
-          {/* Centro da órbita */}
-          <OrbitCenter>
-            <OrbitCenterIcon>
-              <LucideIcons.Rocket size={48} />
-            </OrbitCenterIcon>
-          </OrbitCenter>
-          
-          {/* Cards dos benefícios em órbita */}
-          {content.items.map((benefit, index) => (
-            <BenefitCard 
-              key={index} 
-              className={`orbit-card-${index}`}
-              $position={index}
-              $total={content.items.length}
-            >
-              <BenefitIcon>
-                {getIcon(benefit.icon)}
-              </BenefitIcon>
-              
-              <BenefitTitle>
-                {benefit.title}
-              </BenefitTitle>
-              
-              <BenefitDescription>
-                {benefit.description}
-              </BenefitDescription>
-            </BenefitCard>
-          ))}
-        </OrbitWrapper>
-        
-        {/* Layout para mobile - grid */}
+        {/* Layout de grid para todos os tamanhos de tela */}
         <BenefitsGrid>
           {content.items.map((benefit, index) => (
             <BenefitCard 
-              key={`mobile-${index}`}
+              key={index}
               className="animate-fade-in"
-              $isMobile
             >
               <BenefitIcon>
                 {getIcon(benefit.icon)}
@@ -128,4 +90,3 @@ function BenefitsOrbit({ content }: BenefitsOrbitProps) {
 }
 
 export default BenefitsOrbit;
-

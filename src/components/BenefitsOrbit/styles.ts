@@ -198,10 +198,10 @@ export const BenefitsGrid = styled.div`
 /**
  * Card de benefício
  */
-export const BenefitCard = styled.div<{ 
-  $position?: number; 
-  $total?: number; 
-  $isMobile?: boolean; 
+export const BenefitCard = styled.div<{
+  $position?: number;
+  $total?: number;
+  $isMobile?: boolean;
 }>`
   background: ${({ theme }) => theme.colors.neutral.white};
   border: 1px solid ${({ theme }) => theme.colors.neutral.light};
@@ -318,4 +318,3 @@ export const BenefitDescription = styled.p`
     font-size: ${({ theme }) => theme.typography.fontSize.xs};
   }
 `;
-
