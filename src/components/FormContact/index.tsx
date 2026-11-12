@@ -12,7 +12,7 @@
  * - Design responsivo e acessível
  */
 
-import { useState } from 'react';
+import { useState, type FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -61,27 +61,41 @@ interface FormContactProps {
  * Schema de validação dinâmico baseado na configuração
  */
 const createValidationSchema = (fields: ContentConfig['contact']['form']['fields']) => {
-  const schemaObject: any = {};
+  const schemaObject: Record<string, z.ZodTypeAny> = {};
   
   fields.forEach(field => {
-    let fieldSchema: any;
+    let fieldSchema: z.ZodTypeAny;
     
     switch (field.type) {
-      case 'email':
-        fieldSchema = z.string().email('E-mail inválido');
-        break;
+    case 'email':
+  fieldSchema = z
+    .string()
+    .min(1, 'E-mail é obrigatório')
+    .email('E-mail inválido');
+  break;
       case 'tel':
-        fieldSchema = z.string().regex(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, 'Telefone inválido');
-        break;
+  fieldSchema = z
+    .string()
+    .refine(
+      (v) => {
+        const digits = v.replace(/\D/g, '');       // remove tudo que não é número
+        const normalized = digits.startsWith('55') && digits.length > 11
+          ? digits.slice(2)                        // remove DDI 55 se vier
+          : digits;
+        return normalized.length === 10 || normalized.length === 11;
+      },
+      'Telefone inválido (informe DDD + número)'
+    );
+  break;
       default:
         fieldSchema = z.string();
     }
     
     if (field.required) {
-      fieldSchema = fieldSchema.min(1, `${field.label} é obrigatório`);
+  fieldSchema = fieldSchema.refine(value => value.length > 0, `${field.label} é obrigatório`);
     } else {
-      fieldSchema = fieldSchema.optional();
-    }
+  fieldSchema = fieldSchema.optional().or(z.literal(''));
+}
     
     schemaObject[field.name] = fieldSchema;
   });
@@ -99,7 +113,7 @@ interface FeedbackModalProps {
   onClose: () => void;
 }
 
-const FeedbackModal: React.FC<FeedbackModalProps> = ({ 
+const FeedbackModal: FC<FeedbackModalProps> = ({ 
   isOpen, 
   type, 
   message, 
@@ -168,13 +182,22 @@ function FormContact({ content }: FormContactProps) {
   /**
    * Função para lidar com o envio do formulário
    */
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: unknown) => {
     setIsSubmitting(true);
 
     try {
       // Aqui você pode configurar o endpoint do seu webhook
       // Por exemplo: Zapier, Make.com, ou sua própria API
-      const webhookUrl = import.meta.env.VITE_WEBHOOK_URL || 'https://hooks.zapier.com/hooks/catch/YOUR_WEBHOOK_ID/';
+      const webhookUrl = import.meta.env.VITE_WEBHOOK_URL;
+if (!webhookUrl) {
+  setModalState({
+    isOpen: true,
+    type: 'error',
+    message: 'Formulário não configurado. Defina VITE_WEBHOOK_URL no .env.'
+  });
+  setIsSubmitting(false);
+  return;
+}
       
       const response = await fetch(webhookUrl, {
         method: 'POST',
@@ -182,7 +205,7 @@ function FormContact({ content }: FormContactProps) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          ...data,
+          ...(data as Record<string, unknown>),
           timestamp: new Date().toISOString(),
           source: 'Landing Page Template'
         }),

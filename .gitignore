@@ -1,2 +1,16 @@
 node_modules
 dist
+
+# Variáveis de ambiente (NUNCA commitar)
+.env
+.env.*
+!.env.example
+
+# Caches e logs
+.DS_Store
+*.log
+coverage
+.vite
+
+# Arquivos gerados pelo Repomix
+repomix-output.*
