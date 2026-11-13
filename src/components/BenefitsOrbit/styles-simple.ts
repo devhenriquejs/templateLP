@@ -111,6 +111,9 @@ export const BenefitsGrid = styled.div`
 /**
  * Card de benefício
  */
+/**
+ * Card de benefício
+ */
 export const BenefitCard = styled.div`
   background: white;
   border: 1px solid #e2e8f0;
@@ -122,7 +125,8 @@ export const BenefitCard = styled.div`
   animation: ${floatAnimation} 6s ease-in-out infinite;
   
   &:hover {
-    transform: translateY(-8px);
+    animation-play-state: paused; /* Pausa a flutuação onde ela estiver */
+    translate: 0 -8px; /* Usa 'translate' isolado para não sobrescrever o 'transform' da animação */
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     border-color: #3b82f6;
   }
