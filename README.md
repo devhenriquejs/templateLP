@@ -7,7 +7,6 @@ Um template moderno, responsivo e totalmente configurável para criação de lan
 - **Totalmente Configurável**: Personalize cores, tipografia, conteúdo e layout através de arquivos de configuração
 - **Design Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
 - **Acessibilidade**: Implementa as melhores práticas de acessibilidade web (WCAG 2.1)
-- **Performance Otimizada**: Carregamento rápido com lazy loading e otimizações de imagem
 - **SEO Friendly**: Estrutura semântica e meta tags configuráveis
 - **Formulário Inteligente**: Validação robusta com integração para webhooks (Zapier, Make.com, etc.)
 - **Animações Suaves**: Micro-interações e animações que melhoram a experiência do usuário
@@ -28,18 +27,20 @@ Um template moderno, responsivo e totalmente configurável para criação de lan
 
 ### Pré-requisitos
 
-- Node.js 18+ 
+- Node.js 18+
 - npm ou yarn
 
 ### Passos de Instalação
 
 1. **Clone ou baixe o template**
+
    ```bash
    git clone [URL_DO_REPOSITORIO]
    cd landing-page-template
    ```
 
 2. **Instale as dependências**
+
    ```bash
    npm install
    # ou
@@ -47,6 +48,7 @@ Um template moderno, responsivo e totalmente configurável para criação de lan
    ```
 
 3. **Inicie o servidor de desenvolvimento**
+
    ```bash
    npm run dev
    # ou
@@ -105,6 +107,7 @@ export const defaultTheme: Theme = {
 Para integrar com seu webhook (Zapier, Make.com, etc.):
 
 1. Crie uma variável de ambiente:
+
    ```bash
    echo "VITE_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/SEU_ID/" > .env
    ```
@@ -120,7 +123,7 @@ landing-page-template/
 │   ├── components/         # Componentes React
 │   │   ├── Header/         # Cabeçalho
 │   │   ├── ProblemSolution/# Seção Hero + Problema/Solução
-│   │   ├── BenefitsOrbit/  # Seção de Benefícios
+│   │   ├── Benefits/  # Seção de Benefícios
 │   │   ├── SocialProof/    # Depoimentos e Prova Social
 │   │   ├── AboutSection/   # Seção Sobre
 │   │   ├── FormContact/    # Formulário de Contato
@@ -214,11 +217,10 @@ Seção hero combinada com problema/solução:
 - Apresentação visual problema vs solução
 - Imagens opcionais
 
-### BenefitsOrbit
+### Benefits 
 
 Seção de benefícios com layout em órbita:
 
-- Layout em órbita para desktop
 - Grid responsivo para mobile
 - Ícones do Lucide React
 - Animações flutuantes
@@ -371,4 +373,3 @@ Se você encontrar problemas ou tiver dúvidas:
 ---
 
 **Desenvolvido com ❤️ para criar landing pages incríveis!**
-

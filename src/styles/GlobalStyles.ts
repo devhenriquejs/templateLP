@@ -1,6 +1,6 @@
 /**
  * ESTILOS GLOBAIS DO TEMPLATE
- * 
+ *
  * Este arquivo define os estilos globais da aplicação usando styled-components.
  * Inclui reset CSS, tipografia base, e estilos utilitários.
  */
@@ -368,29 +368,29 @@ export const Container = styled.div<{
   width: 100%;
   max-width: ${({ maxWidth }) => {
     switch (maxWidth) {
-      case 'sm': return '640px';
-      case 'md': return '768px';
-      case 'lg': return '1024px';
-      case 'xl': return '1280px';
-      case 'full': return '100%';
-      default: return '1200px';
+      case 'sm':
+        return '640px';
+      case 'md':
+        return '768px';
+      case 'lg':
+        return '1024px';
+      case 'xl':
+        return '1280px';
+      case 'full':
+        return '100%';
+      default:
+        return '1200px';
     }
   }};
-  margin: ${({ center }) => center ? '0 auto' : '0'};
-  padding: ${({ padding, theme }) => 
-    padding ? `0 ${theme.spacing.lg}` : '0'
-  };
-  
+  margin: ${({ center }) => (center ? '0 auto' : '0')};
+  padding: ${({ padding, theme }) => (padding ? `0 ${theme.spacing.lg}` : '0')};
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: ${({ padding, theme }) => 
-      padding ? `0 ${theme.spacing.md}` : '0'
-    };
+    padding: ${({ padding, theme }) => (padding ? `0 ${theme.spacing.md}` : '0')};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    padding: ${({ padding, theme }) => 
-      padding ? `0 ${theme.spacing.sm}` : '0'
-    };
+    padding: ${({ padding, theme }) => (padding ? `0 ${theme.spacing.sm}` : '0')};
   }
 `;
 
@@ -404,50 +404,68 @@ export const Section = styled.section<{
   width: 100%;
   padding: ${({ padding, theme }) => {
     switch (padding) {
-      case 'sm': return `${theme.spacing['2xl']} 0`;
-      case 'md': return `${theme.spacing['3xl']} 0`;
-      case 'lg': return `${theme.spacing['4xl']} 0`;
-      case 'xl': return `${theme.spacing['5xl']} 0`;
-      default: return `${theme.spacing['4xl']} 0`;
+      case 'sm':
+        return `${theme.spacing['2xl']} 0`;
+      case 'md':
+        return `${theme.spacing['3xl']} 0`;
+      case 'lg':
+        return `${theme.spacing['4xl']} 0`;
+      case 'xl':
+        return `${theme.spacing['5xl']} 0`;
+      default:
+        return `${theme.spacing['4xl']} 0`;
     }
   }};
-  
+
   background: ${({ background, theme }) => {
     switch (background) {
-      case 'white': return theme.colors.neutral.white;
-      case 'light': return theme.colors.neutral.light;
-      case 'dark': return theme.colors.neutral.dark;
-      case 'gradient': return theme.colors.gradients.primary;
-      default: return 'transparent';
+      case 'white':
+        return theme.colors.neutral.white;
+      case 'light':
+        return theme.colors.neutral.light;
+      case 'dark':
+        return theme.colors.neutral.dark;
+      case 'gradient':
+        return theme.colors.gradients.primary;
+      default:
+        return 'transparent';
     }
   }};
-  
-  color: ${({ background, theme }) => 
-    background === 'dark' ? theme.colors.neutral.white : 'inherit'
-  };
-  
+
+  color: ${({ background, theme }) =>
+    background === 'dark' ? theme.colors.neutral.white : 'inherit'};
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: ${({ padding, theme }) => {
       switch (padding) {
-        case 'sm': return `${theme.spacing.xl} 0`;
-        case 'md': return `${theme.spacing['2xl']} 0`;
-        case 'lg': return `${theme.spacing['3xl']} 0`;
-        case 'xl': return `${theme.spacing['4xl']} 0`;
-        default: return `${theme.spacing['3xl']} 0`;
+        case 'sm':
+          return `${theme.spacing.xl} 0`;
+        case 'md':
+          return `${theme.spacing['2xl']} 0`;
+        case 'lg':
+          return `${theme.spacing['3xl']} 0`;
+        case 'xl':
+          return `${theme.spacing['4xl']} 0`;
+        default:
+          return `${theme.spacing['3xl']} 0`;
       }
     }};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: ${({ padding, theme }) => {
       switch (padding) {
-        case 'sm': return `${theme.spacing.lg} 0`;
-        case 'md': return `${theme.spacing.xl} 0`;
-        case 'lg': return `${theme.spacing['2xl']} 0`;
-        case 'xl': return `${theme.spacing['3xl']} 0`;
-        default: return `${theme.spacing['2xl']} 0`;
+        case 'sm':
+          return `${theme.spacing.lg} 0`;
+        case 'md':
+          return `${theme.spacing.xl} 0`;
+        case 'lg':
+          return `${theme.spacing['2xl']} 0`;
+        case 'xl':
+          return `${theme.spacing['3xl']} 0`;
+        default:
+          return `${theme.spacing['2xl']} 0`;
       }
     }};
   }
 `;
-

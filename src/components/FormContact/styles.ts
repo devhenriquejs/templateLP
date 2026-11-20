@@ -1,6 +1,6 @@
 /**
  * ESTILOS DO COMPONENTE FORM CONTACT
- * 
+ *
  * Estilos para o formulário de contato com design moderno e responsivo.
  * Inclui estados de validação, loading e modal de feedback.
  */
@@ -25,11 +25,11 @@ const spin = keyframes`
 export const StyledSection = styled.section`
   background: ${({ theme }) => theme.colors.neutral.light};
   padding: ${({ theme }) => theme.spacing['5xl']} 0;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: ${({ theme }) => theme.spacing['4xl']} 0;
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: ${({ theme }) => theme.spacing['3xl']} 0;
   }
@@ -42,11 +42,11 @@ export const SectionContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 ${({ theme }) => theme.spacing.lg};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 0 ${({ theme }) => theme.spacing.md};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0 ${({ theme }) => theme.spacing.sm};
   }
@@ -61,11 +61,11 @@ export const SectionTitle = styled.h2`
   text-align: center;
   margin-bottom: ${({ theme }) => theme.spacing.md};
   color: ${({ theme }) => theme.colors.neutral.black};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme }) => theme.typography.fontSize['3xl']};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: ${({ theme }) => theme.typography.fontSize['2xl']};
   }
@@ -80,7 +80,7 @@ export const SectionSubtitle = styled.h3`
   text-align: center;
   color: ${({ theme }) => theme.colors.primary.main};
   margin-bottom: ${({ theme }) => theme.spacing.md};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme }) => theme.typography.fontSize.lg};
   }
@@ -97,12 +97,12 @@ export const SectionDescription = styled.p`
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     font-size: ${({ theme }) => theme.typography.fontSize.base};
     margin-bottom: ${({ theme }) => theme.spacing['3xl']};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     margin-bottom: ${({ theme }) => theme.spacing['2xl']};
   }
@@ -116,12 +116,12 @@ export const ContactContent = styled.div`
   grid-template-columns: 1fr 2fr;
   gap: ${({ theme }) => theme.spacing['4xl']};
   align-items: start;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     grid-template-columns: 1fr;
     gap: ${({ theme }) => theme.spacing['3xl']};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     gap: ${({ theme }) => theme.spacing['2xl']};
   }
@@ -134,13 +134,13 @@ export const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.xl};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: column;
     align-items: center;
@@ -159,17 +159,17 @@ export const ContactInfoItem = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   box-shadow: ${({ theme }) => theme.shadows.sm};
   transition: ${({ theme }) => theme.transitions.fast};
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.shadows.md};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.desktop}) {
     flex: 1;
     min-width: 250px;
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     width: 100%;
     padding: ${({ theme }) => theme.spacing.md};
@@ -182,7 +182,7 @@ export const ContactInfoItem = styled.div`
 export const ContactInfoIcon = styled.div`
   font-size: ${({ theme }) => theme.typography.fontSize['2xl']};
   flex-shrink: 0;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: ${({ theme }) => theme.typography.fontSize.xl};
   }
@@ -195,16 +195,16 @@ export const ContactInfoText = styled.div`
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
   line-height: ${({ theme }) => theme.typography.lineHeight.relaxed};
   color: ${({ theme }) => theme.colors.neutral.medium};
-  
+
   strong {
     color: ${({ theme }) => theme.colors.neutral.black};
     font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
   }
-  
+
   a {
     color: ${({ theme }) => theme.colors.primary.main};
     text-decoration: none;
-    
+
     &:hover {
       text-decoration: underline;
     }
@@ -219,7 +219,7 @@ export const FormContainer = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.xl};
   padding: ${({ theme }) => theme.spacing['2xl']};
   box-shadow: ${({ theme }) => theme.shadows.lg};
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: ${({ theme }) => theme.spacing.xl};
   }
@@ -250,7 +250,7 @@ export const FormLabel = styled.label`
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
   font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
   color: ${({ theme }) => theme.colors.neutral.black};
-  
+
   span {
     color: ${({ theme }) => theme.colors.status.error};
   }
@@ -261,25 +261,25 @@ export const FormLabel = styled.label`
  */
 export const FormInput = styled.input<{ $hasError?: boolean }>`
   padding: ${({ theme }) => theme.spacing.md};
-  border: 2px solid ${({ $hasError, theme }) => 
-    $hasError ? theme.colors.status.error : theme.colors.neutral.light
-  };
+  border: 2px solid
+    ${({ $hasError, theme }) =>
+      $hasError ? theme.colors.status.error : theme.colors.neutral.light};
   border-radius: ${({ theme }) => theme.borderRadius.md};
   font-size: ${({ theme }) => theme.typography.fontSize.base};
   font-family: ${({ theme }) => theme.typography.fontFamily.primary};
   transition: ${({ theme }) => theme.transitions.fast};
   background: ${({ theme }) => theme.colors.neutral.white};
-  
+
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.colors.primary.main};
     box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary.main}20;
   }
-  
+
   &::placeholder {
     color: ${({ theme }) => theme.colors.neutral.medium};
   }
-  
+
   &:disabled {
     background: ${({ theme }) => theme.colors.neutral.light};
     cursor: not-allowed;
@@ -291,9 +291,9 @@ export const FormInput = styled.input<{ $hasError?: boolean }>`
  */
 export const FormTextarea = styled.textarea<{ $hasError?: boolean }>`
   padding: ${({ theme }) => theme.spacing.md};
-  border: 2px solid ${({ $hasError, theme }) => 
-    $hasError ? theme.colors.status.error : theme.colors.neutral.light
-  };
+  border: 2px solid
+    ${({ $hasError, theme }) =>
+      $hasError ? theme.colors.status.error : theme.colors.neutral.light};
   border-radius: ${({ theme }) => theme.borderRadius.md};
   font-size: ${({ theme }) => theme.typography.fontSize.base};
   font-family: ${({ theme }) => theme.typography.fontFamily.primary};
@@ -301,17 +301,17 @@ export const FormTextarea = styled.textarea<{ $hasError?: boolean }>`
   background: ${({ theme }) => theme.colors.neutral.white};
   min-height: 120px;
   resize: vertical;
-  
+
   &:focus {
     outline: none;
     border-color: ${({ theme }) => theme.colors.primary.main};
     box-shadow: 0 0 0 3px ${({ theme }) => theme.colors.primary.main}20;
   }
-  
+
   &::placeholder {
     color: ${({ theme }) => theme.colors.neutral.medium};
   }
-  
+
   &:disabled {
     background: ${({ theme }) => theme.colors.neutral.light};
     cursor: not-allowed;
@@ -346,22 +346,22 @@ export const SubmitButton = styled.button`
   justify-content: center;
   gap: ${({ theme }) => theme.spacing.sm};
   box-shadow: ${({ theme }) => theme.shadows.md};
-  
+
   &:hover:not(:disabled) {
     transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.shadows.lg};
   }
-  
+
   &:active:not(:disabled) {
     transform: translateY(0);
   }
-  
+
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
     transform: none;
   }
-  
+
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.primary.main};
     outline-offset: 2px;
@@ -375,8 +375,10 @@ export const SubmitButtonIcon = styled.div<{ $isLoading?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  ${({ $isLoading }) => $isLoading && `
+
+  ${({ $isLoading }) =>
+    $isLoading &&
+    `
     animation: ${spin} 1s linear infinite;
   `}
 `;
@@ -428,9 +430,8 @@ export const ModalContent = styled.div`
  * Cabeçalho do modal
  */
 export const ModalHeader = styled.div<{ $type: 'success' | 'error' }>`
-  background: ${({ $type, theme }) => 
-    $type === 'success' ? theme.colors.status.success : theme.colors.status.error
-  };
+  background: ${({ $type, theme }) =>
+    $type === 'success' ? theme.colors.status.success : theme.colors.status.error};
   color: ${({ theme }) => theme.colors.neutral.white};
   padding: ${({ theme }) => theme.spacing.lg};
   display: flex;
@@ -467,11 +468,11 @@ export const ModalCloseButton = styled.button`
   padding: ${({ theme }) => theme.spacing.xs};
   border-radius: ${({ theme }) => theme.borderRadius.sm};
   transition: ${({ theme }) => theme.transitions.fast};
-  
+
   &:hover {
     background: rgba(255, 255, 255, 0.2);
   }
-  
+
   &:focus {
     outline: 2px solid rgba(255, 255, 255, 0.5);
     outline-offset: 2px;
@@ -488,4 +489,3 @@ export const ModalMessage = styled.p`
   color: ${({ theme }) => theme.colors.neutral.dark};
   margin: 0;
 `;
-

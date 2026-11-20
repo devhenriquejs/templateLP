@@ -1,9 +1,9 @@
 /**
  * COMPONENTE ABOUT SECTION
- * 
+ *
  * Seção que apresenta informações sobre a empresa ou pessoa,
  * incluindo descrição, características e recursos destacados.
- * 
+ *
  * Funcionalidades:
  * - Conteúdo configurável via props
  * - Layout flexível com imagem opcional
@@ -11,7 +11,6 @@
  * - Design responsivo
  * - Animações suaves
  */
-
 
 import { CheckCircle } from 'lucide-react';
 
@@ -30,7 +29,7 @@ import {
   FeatureCard,
   FeatureIcon,
   FeatureTitle,
-  FeatureDescription
+  FeatureDescription,
 } from './styles';
 
 /**
@@ -42,7 +41,7 @@ interface AboutSectionProps {
 
 /**
  * Componente AboutSection
- * 
+ *
  * @param content - Configuração de conteúdo da seção sobre
  */
 function AboutSection({ content }: AboutSectionProps) {
@@ -50,25 +49,19 @@ function AboutSection({ content }: AboutSectionProps) {
     <StyledSection id="about">
       <SectionContainer>
         {/* Título da seção */}
-        <SectionTitle className="animate-fade-in">
-          {content.title}
-        </SectionTitle>
-        
+        <SectionTitle className="animate-fade-in">{content.title}</SectionTitle>
+
         {/* Subtítulo da seção */}
         {content.subtitle && (
-          <SectionSubtitle className="animate-fade-in">
-            {content.subtitle}
-          </SectionSubtitle>
+          <SectionSubtitle className="animate-fade-in">{content.subtitle}</SectionSubtitle>
         )}
-        
+
         {/* Conteúdo principal */}
         <AboutContent>
           {/* Texto descritivo */}
           <AboutText className="animate-slide-in-left">
-            <AboutDescription>
-              {content.description}
-            </AboutDescription>
-            
+            <AboutDescription>{content.description}</AboutDescription>
+
             {/* Lista de características/recursos */}
             {content.features && content.features.length > 0 && (
               <FeaturesGrid>
@@ -77,30 +70,22 @@ function AboutSection({ content }: AboutSectionProps) {
                     <FeatureIcon>
                       <CheckCircle size={20} />
                     </FeatureIcon>
-                    
+
                     <div>
-                      <FeatureTitle>
-                        {feature.title}
-                      </FeatureTitle>
-                      
-                      <FeatureDescription>
-                        {feature.description}
-                      </FeatureDescription>
+                      <FeatureTitle>{feature.title}</FeatureTitle>
+
+                      <FeatureDescription>{feature.description}</FeatureDescription>
                     </div>
                   </FeatureCard>
                 ))}
               </FeaturesGrid>
             )}
           </AboutText>
-          
+
           {/* Imagem (opcional) */}
           {content.image && (
             <AboutImage className="animate-slide-in-right">
-              <img 
-                src={content.image} 
-                alt="Sobre nós"
-                loading="lazy"
-              />
+              <img src={content.image} alt="Sobre nós" loading="lazy" />
             </AboutImage>
           )}
         </AboutContent>
@@ -110,4 +95,3 @@ function AboutSection({ content }: AboutSectionProps) {
 }
 
 export default AboutSection;
-

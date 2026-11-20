@@ -1,9 +1,9 @@
 /**
  * COMPONENTE FORM CONTACT
- * 
+ *
  * Formulário de contato configurável com validação e envio.
  * Inclui integração com webhooks e feedback visual.
- * 
+ *
  * Funcionalidades:
  * - Campos configuráveis via props
  * - Validação com Zod e React Hook Form
@@ -47,7 +47,7 @@ import {
   ModalIcon,
   ModalTitle,
   ModalMessage,
-  ModalCloseButton
+  ModalCloseButton,
 } from './styles';
 
 /**
@@ -62,44 +62,37 @@ interface FormContactProps {
  */
 const createValidationSchema = (fields: ContentConfig['contact']['form']['fields']) => {
   const schemaObject: Record<string, z.ZodTypeAny> = {};
-  
-  fields.forEach(field => {
+
+  fields.forEach((field) => {
     let fieldSchema: z.ZodTypeAny;
-    
+
     switch (field.type) {
-    case 'email':
-  fieldSchema = z
-    .string()
-    .min(1, 'E-mail é obrigatório')
-    .email('E-mail inválido');
-  break;
+      case 'email':
+        fieldSchema = z.string().min(1, 'E-mail é obrigatório').email('E-mail inválido');
+        break;
       case 'tel':
-  fieldSchema = z
-    .string()
-    .refine(
-      (v) => {
-        const digits = v.replace(/\D/g, '');       // remove tudo que não é número
-        const normalized = digits.startsWith('55') && digits.length > 11
-          ? digits.slice(2)                        // remove DDI 55 se vier
-          : digits;
-        return normalized.length === 10 || normalized.length === 11;
-      },
-      'Telefone inválido (informe DDD + número)'
-    );
-  break;
+        fieldSchema = z.string().refine((v) => {
+          const digits = v.replace(/\D/g, ''); // remove tudo que não é número
+          const normalized =
+            digits.startsWith('55') && digits.length > 11
+              ? digits.slice(2) // remove DDI 55 se vier
+              : digits;
+          return normalized.length === 10 || normalized.length === 11;
+        }, 'Telefone inválido (informe DDD + número)');
+        break;
       default:
         fieldSchema = z.string();
     }
-    
+
     if (field.required) {
-  fieldSchema = fieldSchema.refine(value => value.length > 0, `${field.label} é obrigatório`);
+      fieldSchema = fieldSchema.refine((value) => value.length > 0, `${field.label} é obrigatório`);
     } else {
-  fieldSchema = fieldSchema.optional().or(z.literal(''));
-}
-    
+      fieldSchema = fieldSchema.optional().or(z.literal(''));
+    }
+
     schemaObject[field.name] = fieldSchema;
   });
-  
+
   return z.object(schemaObject);
 };
 
@@ -115,17 +108,15 @@ interface FeedbackModalProps {
   onClose: () => void;
 }
 
-const FeedbackModal: FC<FeedbackModalProps> = ({ 
-  isOpen, 
-  type, 
-  message, 
+const FeedbackModal: FC<FeedbackModalProps> = ({
+  isOpen,
+  type,
+  message,
   successTitle,
   errorTitle,
-  onClose 
+  onClose,
 }) => {
-  <ModalTitle>
-    {type === 'success' ? successTitle : errorTitle}
-  </ModalTitle>
+  <ModalTitle>{type === 'success' ? successTitle : errorTitle}</ModalTitle>;
   if (!isOpen) return null;
 
   return (
@@ -134,15 +125,9 @@ const FeedbackModal: FC<FeedbackModalProps> = ({
       <ModalContent>
         <ModalHeader $type={type}>
           <ModalIcon>
-            {type === 'success' ? (
-              <CheckCircle size={24} />
-            ) : (
-              <AlertCircle size={24} />
-            )}
+            {type === 'success' ? <CheckCircle size={24} /> : <AlertCircle size={24} />}
           </ModalIcon>
-          <ModalTitle>
-            {type === 'success' ? 'Sucesso!' : 'Erro!'}
-          </ModalTitle>
+          <ModalTitle>{type === 'success' ? 'Sucesso!' : 'Erro!'}</ModalTitle>
           <ModalCloseButton onClick={onClose}>
             <X size={20} />
           </ModalCloseButton>
@@ -155,7 +140,7 @@ const FeedbackModal: FC<FeedbackModalProps> = ({
 
 /**
  * Componente FormContact
- * 
+ *
  * @param content - Configuração de conteúdo do formulário de contato
  */
 function FormContact({ content }: FormContactProps) {
@@ -167,7 +152,7 @@ function FormContact({ content }: FormContactProps) {
   }>({
     isOpen: false,
     type: 'success',
-    message: ''
+    message: '',
   });
 
   // Estado para controle do envio
@@ -181,9 +166,9 @@ function FormContact({ content }: FormContactProps) {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm({
-    resolver: zodResolver(validationSchema)
+    resolver: zodResolver(validationSchema),
   });
 
   /**
@@ -196,16 +181,16 @@ function FormContact({ content }: FormContactProps) {
       // Aqui você pode configurar o endpoint do seu webhook
       // Por exemplo: Zapier, Make.com, ou sua própria API
       const webhookUrl = import.meta.env.VITE_WEBHOOK_URL;
-if (!webhookUrl) {
-  setModalState({
-    isOpen: true,
-    type: 'error',
-    message: 'Formulário não configurado. Defina VITE_WEBHOOK_URL no .env.'
-  });
-  setIsSubmitting(false);
-  return;
-}
-      
+      if (!webhookUrl) {
+        setModalState({
+          isOpen: true,
+          type: 'error',
+          message: 'Formulário não configurado. Defina VITE_WEBHOOK_URL no .env.',
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
@@ -222,7 +207,7 @@ if (!webhookUrl) {
         setModalState({
           isOpen: true,
           type: 'success',
-          message: content.form.successMessage
+          message: content.form.successMessage,
         });
         reset();
       } else {
@@ -233,7 +218,7 @@ if (!webhookUrl) {
       setModalState({
         isOpen: true,
         type: 'error',
-        message: content.form.errorMessage
+        message: content.form.errorMessage,
       });
     } finally {
       setIsSubmitting(false);
@@ -244,7 +229,7 @@ if (!webhookUrl) {
    * Função para fechar o modal
    */
   const closeModal = () => {
-    setModalState(prev => ({ ...prev, isOpen: false }));
+    setModalState((prev) => ({ ...prev, isOpen: false }));
   };
 
   /**
@@ -252,7 +237,7 @@ if (!webhookUrl) {
    */
   const renderField = (field: ContentConfig['contact']['form']['fields'][0]) => {
     const error = errors[field.name];
-    
+
     if (field.type === 'textarea') {
       return (
         <FormGroup key={field.name}>
@@ -303,72 +288,59 @@ if (!webhookUrl) {
     <StyledSection id="contact">
       <SectionContainer>
         {/* Título da seção */}
-        <SectionTitle className="animate-fade-in">
-          {content.title}
-        </SectionTitle>
-        
+        <SectionTitle className="animate-fade-in">{content.title}</SectionTitle>
+
         {/* Subtítulo da seção */}
         {content.subtitle && (
-          <SectionSubtitle className="animate-fade-in">
-            {content.subtitle}
-          </SectionSubtitle>
+          <SectionSubtitle className="animate-fade-in">{content.subtitle}</SectionSubtitle>
         )}
-        
+
         {/* Descrição da seção */}
-        <SectionDescription className="animate-fade-in">
-          {content.description}
-        </SectionDescription>
-        
+        <SectionDescription className="animate-fade-in">{content.description}</SectionDescription>
+
         {/* Conteúdo principal */}
         <ContactContent>
           {/* Informações de contato */}
           <ContactInfo className="animate-slide-in-left">
             {content.info.email && (
               <ContactInfoItem>
-                <ContactInfoIcon>
-                  📧
-                </ContactInfoIcon>
+                <ContactInfoIcon>📧</ContactInfoIcon>
                 <ContactInfoText>
-                <strong>{content.info.emailLabel}</strong><br />
-                  <a href={`mailto:${content.info.email}`}>
-                    {content.info.email}
-                  </a>
+                  <strong>{content.info.emailLabel}</strong>
+                  <br />
+                  <a href={`mailto:${content.info.email}`}>{content.info.email}</a>
                 </ContactInfoText>
               </ContactInfoItem>
             )}
-            
+
             {content.info.phone && (
               <ContactInfoItem>
-                <ContactInfoIcon>
-                  📞
-                </ContactInfoIcon>
+                <ContactInfoIcon>📞</ContactInfoIcon>
                 <ContactInfoText>
-                  <strong>{content.info.phoneLabel}</strong><br />
-                  <a href={`tel:${content.info.phone}`}>
-                    {content.info.phone}
-                  </a>
+                  <strong>{content.info.phoneLabel}</strong>
+                  <br />
+                  <a href={`tel:${content.info.phone}`}>{content.info.phone}</a>
                 </ContactInfoText>
               </ContactInfoItem>
             )}
-            
+
             {content.info.address && (
               <ContactInfoItem>
-                <ContactInfoIcon>
-                  📍
-                </ContactInfoIcon>
+                <ContactInfoIcon>📍</ContactInfoIcon>
                 <ContactInfoText>
-                  <strong>{content.info.addressLabel}</strong><br />
+                  <strong>{content.info.addressLabel}</strong>
+                  <br />
                   {content.info.address}
                 </ContactInfoText>
               </ContactInfoItem>
             )}
           </ContactInfo>
-          
+
           {/* Formulário */}
           <FormContainer className="animate-slide-in-right">
             <ContactForm onSubmit={handleSubmit(onSubmit)} noValidate>
               {content.form.fields.map(renderField)}
-              
+
               <SubmitButton
                 type="submit"
                 disabled={isSubmitting}
@@ -382,13 +354,13 @@ if (!webhookUrl) {
             </ContactForm>
           </FormContainer>
         </ContactContent>
-        
+
         {/* Modal de feedback */}
         <FeedbackModal
           isOpen={modalState.isOpen}
           type={modalState.type}
           message={modalState.message}
-          successTitle={content.form.successTitle} 
+          successTitle={content.form.successTitle}
           errorTitle={content.form.errorTitle}
           onClose={closeModal}
         />
@@ -398,4 +370,3 @@ if (!webhookUrl) {
 }
 
 export default FormContact;
-

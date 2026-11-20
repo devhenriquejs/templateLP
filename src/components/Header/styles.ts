@@ -1,6 +1,6 @@
 /**
  * ESTILOS DO COMPONENTE HEADER
- * 
+ *
  * Estilos responsivos e acessíveis para o cabeçalho da landing page.
  * Inclui navegação desktop, menu mobile e estados de scroll.
  */
@@ -16,22 +16,16 @@ export const StyledHeader = styled.header<{ $isScrolled: boolean }>`
   left: 0;
   right: 0;
   z-index: 1000;
-  background: ${({ $isScrolled, theme }) => 
-    $isScrolled 
+  background: ${({ $isScrolled, theme }) =>
+    $isScrolled
       ? `${theme.colors.neutral.white}f5` // Fundo semi-transparente quando scrolled
-      : 'transparent'
-  };
-  backdrop-filter: ${({ $isScrolled }) => 
-    $isScrolled ? 'blur(10px)' : 'none'
-  };
-  border-bottom: ${({ $isScrolled, theme }) => 
-    $isScrolled 
-      ? `1px solid ${theme.colors.neutral.light}` 
-      : 'none'
-  };
+      : 'transparent'};
+  backdrop-filter: ${({ $isScrolled }) => ($isScrolled ? 'blur(10px)' : 'none')};
+  border-bottom: ${({ $isScrolled, theme }) =>
+    $isScrolled ? `1px solid ${theme.colors.neutral.light}` : 'none'};
   transition: ${({ theme }) => theme.transitions.normal};
   padding: ${({ theme }) => theme.spacing.md} 0;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: ${({ theme }) => theme.spacing.sm} 0;
   }
@@ -47,11 +41,11 @@ export const StyledHeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: 0 ${({ theme }) => theme.spacing.md};
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 0 ${({ theme }) => theme.spacing.sm};
   }
@@ -69,26 +63,26 @@ export const StyledLogo = styled.div`
   color: ${({ theme }) => theme.colors.neutral.black};
   text-decoration: none;
   transition: ${({ theme }) => theme.transitions.fast};
-  
+
   img {
     height: 40px;
     width: auto;
   }
-  
+
   span {
     background: ${({ theme }) => theme.colors.neutral.dark};
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
+
   &:hover {
     transform: scale(1.05);
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     font-size: ${({ theme }) => theme.typography.fontSize.lg};
-    
+
     img {
       height: 32px;
     }
@@ -101,7 +95,7 @@ export const StyledLogo = styled.div`
 export const StyledNav = styled.nav`
   display: flex;
   align-items: center;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
@@ -133,17 +127,17 @@ export const StyledNavLink = styled.button`
   border-radius: ${({ theme }) => theme.borderRadius.md};
   transition: ${({ theme }) => theme.transitions.fast};
   position: relative;
-  
+
   &:hover {
     color: ${({ theme }) => theme.colors.primary.main};
     background: ${({ theme }) => theme.colors.primary.main}10;
   }
-  
+
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.primary.main};
     outline-offset: 2px;
   }
-  
+
   &::after {
     content: '';
     position: absolute;
@@ -155,7 +149,7 @@ export const StyledNavLink = styled.button`
     transition: ${({ theme }) => theme.transitions.fast};
     transform: translateX(-50%);
   }
-  
+
   &:hover::after {
     width: 100%;
   }
@@ -178,7 +172,7 @@ export const StyledCtaButton = styled.button`
   box-shadow: ${({ theme }) => theme.shadows.md};
   position: relative;
   overflow: hidden;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -186,33 +180,28 @@ export const StyledCtaButton = styled.button`
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.2),
-      transparent
-    );
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: ${({ theme }) => theme.transitions.normal};
   }
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: ${({ theme }) => theme.shadows.lg};
-    
+
     &::before {
       left: 100%;
     }
   }
-  
+
   &:active {
     transform: translateY(0);
   }
-  
+
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.primary.main};
     outline-offset: 2px;
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
@@ -230,16 +219,16 @@ export const StyledMobileMenuButton = styled.button`
   padding: ${({ theme }) => theme.spacing.xs};
   border-radius: ${({ theme }) => theme.borderRadius.md};
   transition: ${({ theme }) => theme.transitions.fast};
-  
+
   &:hover {
     background: ${({ theme }) => theme.colors.neutral.light};
   }
-  
+
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.primary.main};
     outline-offset: 2px;
   }
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: flex;
     align-items: center;
@@ -258,12 +247,12 @@ export const StyledMobileMenu = styled.div<{ $isOpen: boolean }>`
   background: ${({ theme }) => theme.colors.neutral.white};
   border-bottom: 1px solid ${({ theme }) => theme.colors.neutral.light};
   box-shadow: ${({ theme }) => theme.shadows.lg};
-  transform: ${({ $isOpen }) => $isOpen ? 'translateY(0)' : 'translateY(-100%)'};
-  opacity: ${({ $isOpen }) => $isOpen ? 1 : 0};
-  visibility: ${({ $isOpen }) => $isOpen ? 'visible' : 'hidden'};
+  transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-100%)')};
+  opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
+  visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
   transition: ${({ theme }) => theme.transitions.normal};
   z-index: 999;
-  
+
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
     display: none;
   }
@@ -295,12 +284,12 @@ export const StyledMobileNavLink = styled.button`
   padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
   border-radius: ${({ theme }) => theme.borderRadius.md};
   transition: ${({ theme }) => theme.transitions.fast};
-  
+
   &:hover {
     background: ${({ theme }) => theme.colors.neutral.light};
     color: ${({ theme }) => theme.colors.primary.main};
   }
-  
+
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.primary.main};
     outline-offset: 2px;
@@ -323,14 +312,13 @@ export const StyledMobileCtaButton = styled.button`
   cursor: pointer;
   transition: ${({ theme }) => theme.transitions.fast};
   margin-top: ${({ theme }) => theme.spacing.sm};
-  
+
   &:hover {
     opacity: 0.9;
   }
-  
+
   &:focus {
     outline: 2px solid ${({ theme }) => theme.colors.primary.main};
     outline-offset: 2px;
   }
 `;
-

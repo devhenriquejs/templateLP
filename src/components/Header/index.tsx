@@ -1,9 +1,9 @@
 /**
  * COMPONENTE HEADER
- * 
+ *
  * Cabeçalho da landing page com navegação, logo e call-to-action principal.
  * Este componente é totalmente configurável através das props de conteúdo.
- * 
+ *
  * Funcionalidades:
  * - Logo/marca personalizável (texto ou imagem)
  * - Menu de navegação responsivo
@@ -31,7 +31,7 @@ import {
   StyledMobileNavList,
   StyledMobileNavItem,
   StyledMobileNavLink,
-  StyledMobileCtaButton
+  StyledMobileCtaButton,
 } from './styles';
 
 /**
@@ -43,13 +43,13 @@ interface HeaderProps {
 
 /**
  * Componente Header
- * 
+ *
  * @param content - Configuração de conteúdo do cabeçalho
  */
 function Header({ content }: HeaderProps) {
   // Estado para controlar o menu mobile
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+
   // Estado para controlar o scroll (header fixo)
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -90,9 +90,9 @@ function Header({ content }: HeaderProps) {
       // Navegação suave para âncoras
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ 
+        element.scrollIntoView({
           behavior: 'smooth',
-          block: 'start'
+          block: 'start',
         });
       }
     } else {
@@ -102,21 +102,12 @@ function Header({ content }: HeaderProps) {
   };
 
   return (
-    <StyledHeader 
-      role="banner" 
-      $isScrolled={isScrolled}
-      aria-label="Cabeçalho principal"
-    >
+    <StyledHeader role="banner" $isScrolled={isScrolled} aria-label="Cabeçalho principal">
       <StyledHeaderContainer>
         {/* Logo/Marca */}
         <StyledLogo>
           {content.logo.image ? (
-            <img 
-              src={content.logo.image} 
-              alt={content.logo.text}
-              width="auto"
-              height="40"
-            />
+            <img src={content.logo.image} alt={content.logo.text} width="auto" height="40" />
           ) : (
             <span>{content.logo.text}</span>
           )}
@@ -174,7 +165,7 @@ function Header({ content }: HeaderProps) {
       </StyledHeaderContainer>
 
       {/* Menu Mobile */}
-      <StyledMobileMenu 
+      <StyledMobileMenu
         id="mobile-menu"
         $isOpen={isMobileMenuOpen}
         role="navigation"
@@ -200,7 +191,7 @@ function Header({ content }: HeaderProps) {
               </StyledMobileNavLink>
             </StyledMobileNavItem>
           ))}
-          
+
           {/* Call-to-Action Mobile */}
           <StyledMobileNavItem>
             <StyledMobileCtaButton
@@ -225,4 +216,3 @@ function Header({ content }: HeaderProps) {
 }
 
 export default Header;
-

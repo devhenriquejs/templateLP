@@ -108,6 +108,7 @@ typography: {
 ```
 
 **Fontes Recomendadas**:
+
 - **Profissional**: Inter, Roboto, Open Sans
 - **Criativo**: Poppins, Montserrat, Nunito
 - **Elegante**: Playfair Display, Crimson Text, Lora
@@ -151,6 +152,7 @@ benefits: {
 ```
 
 **Ícones Disponíveis** (Lucide React):
+
 - `Zap`, `Shield`, `TrendingUp`, `Users`, `Star`, `Heart`
 - `CheckCircle`, `Award`, `Target`, `Rocket`, `Globe`, `Lock`
 - Veja todos em: https://lucide.dev/icons/
@@ -187,10 +189,10 @@ Cada componente tem seu arquivo `styles.ts`. Para personalizar:
 export const StyledHeader = styled.header`
   background: ${({ theme }) => theme.colors.neutral.white};
   padding: ${({ theme }) => theme.spacing.md} 0;
-  
+
   // Suas personalizações aqui
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     padding: ${({ theme }) => theme.spacing.sm} 0;
   }
@@ -309,23 +311,20 @@ contact: {
 // src/components/FormContact/index.tsx
 const createValidationSchema = (fields) => {
   const schemaObject = {};
-  
-  fields.forEach(field => {
+
+  fields.forEach((field) => {
     let fieldSchema;
-    
-        switch (field.type) {
+
+    switch (field.type) {
       case 'email':
         fieldSchema = z.string().email('E-mail inválido');
         break;
       case 'tel':
         // Validando pela quantidade de dígitos (aceita 10 ou 11 dígitos)
-        fieldSchema = z.string().refine(
-          (v) => {
-            const digits = v.replace(/\D/g, '');
-            return digits.length === 10 || digits.length === 11;
-          },
-          'Telefone inválido (informe DDD + número)'
-        );
+        fieldSchema = z.string().refine((v) => {
+          const digits = v.replace(/\D/g, '');
+          return digits.length === 10 || digits.length === 11;
+        }, 'Telefone inválido (informe DDD + número)');
         break;
       case 'url':
         fieldSchema = z.string().url('URL inválida');
@@ -333,14 +332,14 @@ const createValidationSchema = (fields) => {
       default:
         fieldSchema = z.string();
     }
-    
+
     if (field.required) {
       fieldSchema = fieldSchema.min(1, `${field.label} é obrigatório`);
     }
-    
+
     schemaObject[field.name] = fieldSchema;
   });
-  
+
   return z.object(schemaObject);
 };
 ```
@@ -366,21 +365,21 @@ Adicione no `index.html`:
 
 ```html
 <!-- Open Graph (Facebook) -->
-<meta property="og:title" content="Título da Página">
-<meta property="og:description" content="Descrição da página">
-<meta property="og:image" content="https://seudominio.com/og-image.jpg">
-<meta property="og:url" content="https://seudominio.com">
-<meta property="og:type" content="website">
+<meta property="og:title" content="Título da Página" />
+<meta property="og:description" content="Descrição da página" />
+<meta property="og:image" content="https://seudominio.com/og-image.jpg" />
+<meta property="og:url" content="https://seudominio.com" />
+<meta property="og:type" content="website" />
 
 <!-- Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Título da Página">
-<meta name="twitter:description" content="Descrição da página">
-<meta name="twitter:image" content="https://seudominio.com/twitter-image.jpg">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Título da Página" />
+<meta name="twitter:description" content="Descrição da página" />
+<meta name="twitter:image" content="https://seudominio.com/twitter-image.jpg" />
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" href="/favicon.png" />
 ```
 
 ## 🔗 Integração com Serviços Externos
@@ -420,7 +419,9 @@ Adicione no `index.html`:
 <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() {
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
   gtag('config', 'GA_MEASUREMENT_ID');
 </script>
@@ -431,14 +432,22 @@ Adicione no `index.html`:
 ```html
 <!-- Facebook Pixel -->
 <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
+  !(function (f, b, e, v, n, t, s) {
+    if (f.fbq) return;
+    n = f.fbq = function () {
+      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+    };
+    if (!f._fbq) f._fbq = n;
+    n.push = n;
+    n.loaded = !0;
+    n.version = '2.0';
+    n.queue = [];
+    t = b.createElement(e);
+    t.async = !0;
+    t.src = v;
+    s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s);
+  })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', 'SEU_PIXEL_ID');
   fbq('track', 'PageView');
 </script>
@@ -475,19 +484,23 @@ Adicione no `index.html`:
 ### Problemas Comuns
 
 **1. Imagens não carregam**
+
 - Verifique se estão na pasta `public/`
 - Use caminhos relativos: `/imagem.jpg`
 
 **2. Cores não aplicam**
+
 - Verifique se está usando `${({ theme }) => theme.colors.primary.main}`
 - Confirme se o ThemeProvider está envolvendo o componente
 
 **3. Formulário não envia**
+
 - Verifique a URL do webhook
 - Confirme se a variável de ambiente está configurada
 - Teste a URL diretamente
 
 **4. Layout quebrado no mobile**
+
 - Use media queries: `@media (max-width: ${({ theme }) => theme.breakpoints.mobile})`
 - Teste em diferentes dispositivos
 
@@ -526,4 +539,3 @@ console.log('URL do webhook:', import.meta.env.VITE_WEBHOOK_URL);
 ---
 
 **Precisa de ajuda?** Abra uma issue no repositório ou entre em contato!
-

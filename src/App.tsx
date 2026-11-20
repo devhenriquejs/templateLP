@@ -1,9 +1,9 @@
 /**
  * COMPONENTE PRINCIPAL DA APLICAÇÃO
- * 
+ *
  * Este é o componente raiz da landing page template.
  * Ele organiza todos os componentes de seção e aplica o tema global.
- * 
+ *
  * Para personalizar:
  * 1. Modifique a ordem das seções conforme necessário
  * 2. Adicione ou remova seções baseado no seu projeto
@@ -31,7 +31,7 @@ import Footer from './components/Footer';
 
 /**
  * Componente principal da aplicação
- * 
+ *
  * Renderiza toda a estrutura da landing page com:
  * - Cabeçalho com navegação
  * - Seções de conteúdo principal
@@ -43,38 +43,38 @@ function App() {
     <ThemeProvider theme={defaultTheme}>
       {/* Estilos globais aplicados a toda a aplicação */}
       <GlobalStyles />
-      
+
       {/* Link para pular para o conteúdo principal (acessibilidade) */}
       <a href="#main-content" className="skip-link">
         Pular para o conteúdo principal
       </a>
-      
+
       {/* Container principal da aplicação */}
       <AppContainer>
         {/* Cabeçalho com navegação e logo */}
         <Header content={defaultContent.header} />
-        
+
         {/* Conteúdo principal da página */}
         <MainContent id="main-content">
           {/* Seção Hero - primeira impressão */}
-          <ProblemSolution 
+          <ProblemSolution
             content={defaultContent.hero}
             problemSolution={defaultContent.problemSolution}
           />
-          
+
           {/* Seção de Benefícios - pontos fortes do produto/serviço */}
           <BenefitsOrbit content={defaultContent.benefits} />
-          
+
           {/* Seção de Prova Social - depoimentos e estatísticas */}
           <SocialProof content={defaultContent.socialProof} />
-          
+
           {/* Seção Sobre - informações da empresa */}
           <AboutSection content={defaultContent.about} />
-          
+
           {/* Seção de Contato - formulário e informações */}
           <FormContact content={defaultContent.contact} />
         </MainContent>
-        
+
         {/* Rodapé com links e informações adicionais */}
         <Footer content={defaultContent.footer} />
       </AppContainer>
@@ -83,4 +83,3 @@ function App() {
 }
 
 export default App;
-

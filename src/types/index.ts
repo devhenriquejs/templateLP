@@ -1,6 +1,6 @@
 /**
  * TIPOS TYPESCRIPT DO TEMPLATE
- * 
+ *
  * Este arquivo define todos os tipos TypeScript utilizados
  * no template, garantindo type safety e melhor experiência
  * de desenvolvimento.
@@ -231,4 +231,3 @@ export interface A11yProps {
   role?: string;
   tabIndex?: number;
 }
-

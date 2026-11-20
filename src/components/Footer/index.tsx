@@ -1,9 +1,9 @@
 /**
  * COMPONENTE FOOTER
- * 
+ *
  * Rodapé da landing page com links, informações de contato,
  * redes sociais e copyright.
- * 
+ *
  * Funcionalidades:
  * - Links organizados por seções
  * - Redes sociais configuráveis
@@ -11,7 +11,6 @@
  * - Copyright dinâmico
  * - Design responsivo
  */
-
 
 import * as LucideIcons from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
@@ -33,7 +32,7 @@ import {
   SocialLinks,
   SocialLink,
   FooterBottom,
-  FooterCopyright
+  FooterCopyright,
 } from './styles';
 
 /**
@@ -50,15 +49,13 @@ const getIcon = (iconName: string, size: number = 20) => {
   // Dizemos ao TS que isso é um dicionário de ícones
   const IconsDict = LucideIcons as unknown as Record<string, LucideIcon>;
   const IconComponent = IconsDict[iconName];
-  
-  return IconComponent 
-    ? <IconComponent size={size} /> 
-    : <LucideIcons.ExternalLink size={size} />;
+
+  return IconComponent ? <IconComponent size={size} /> : <LucideIcons.ExternalLink size={size} />;
 };
 
 /**
  * Componente Footer
- * 
+ *
  * @param content - Configuração de conteúdo do rodapé
  */
 function Footer({ content }: FooterProps) {
@@ -72,9 +69,9 @@ function Footer({ content }: FooterProps) {
       // Navegação suave para âncoras
       const element = document.querySelector(href);
       if (element) {
-        element.scrollIntoView({ 
+        element.scrollIntoView({
           behavior: 'smooth',
-          block: 'start'
+          block: 'start',
         });
       }
     } else {
@@ -90,15 +87,13 @@ function Footer({ content }: FooterProps) {
           <FooterDescription>
             <p>{content.description}</p>
           </FooterDescription>
-          
+
           {/* Links organizados por seções */}
           <FooterLinks>
             {content.links.map((section, index) => (
               <FooterSection key={index}>
-                <FooterSectionTitle>
-                  {section.title}
-                </FooterSectionTitle>
-                
+                <FooterSectionTitle>{section.title}</FooterSectionTitle>
+
                 <FooterLinksList>
                   {section.items.map((link, linkIndex) => (
                     <li key={linkIndex}>
@@ -115,9 +110,7 @@ function Footer({ content }: FooterProps) {
                         aria-label={`Navegar para ${link.label}`}
                       >
                         {link.label}
-                        {link.external && (
-                          <LucideIcons.ExternalLink size={14} />
-                        )}
+                        {link.external && <LucideIcons.ExternalLink size={14} />}
                       </FooterLink>
                     </li>
                   ))}
@@ -125,14 +118,12 @@ function Footer({ content }: FooterProps) {
               </FooterSection>
             ))}
           </FooterLinks>
-          
+
           {/* Redes sociais */}
           {content.social && content.social.length > 0 && (
             <FooterSocial>
-              <SocialTitle>
-                {content.socialTitle}
-              </SocialTitle>
-              
+              <SocialTitle>{content.socialTitle}</SocialTitle>
+
               <SocialLinks>
                 {content.social.map((social, index) => (
                   <SocialLink
@@ -156,12 +147,10 @@ function Footer({ content }: FooterProps) {
             </FooterSocial>
           )}
         </FooterContent>
-        
+
         {/* Rodapé inferior com copyright */}
         <FooterBottom>
-          <FooterCopyright>
-            {content.copyright}
-          </FooterCopyright>
+          <FooterCopyright>{content.copyright}</FooterCopyright>
         </FooterBottom>
       </FooterContainer>
     </StyledFooter>
@@ -169,4 +158,3 @@ function Footer({ content }: FooterProps) {
 }
 
 export default Footer;
-

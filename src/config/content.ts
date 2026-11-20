@@ -1,9 +1,9 @@
 /**
  * CONFIGURAÇÃO DE CONTEÚDO DO TEMPLATE
- * 
+ *
  * Este arquivo centraliza todo o conteúdo textual e configurações
  * da landing page, facilitando a personalização sem mexer no código.
- * 
+ *
  * Para personalizar o conteúdo:
  * 1. Modifique os textos nas seções correspondentes
  * 2. Atualize as URLs de imagens e links
@@ -20,7 +20,7 @@ export interface ContentConfig {
     author: string;
     url: string;
   };
-  
+
   // Configurações do cabeçalho
   header: {
     logo: {
@@ -37,7 +37,7 @@ export interface ContentConfig {
       href: string;
     };
   };
-  
+
   // Seção Hero (principal)
   hero: {
     title: string;
@@ -54,7 +54,7 @@ export interface ContentConfig {
     backgroundImage?: string;
     heroImage?: string;
   };
-  
+
   // Seção Problema/Solução
   problemSolution: {
     title: string;
@@ -70,7 +70,7 @@ export interface ContentConfig {
       image?: string;
     };
   };
-  
+
   // Seção de Benefícios
   benefits: {
     title: string;
@@ -81,7 +81,7 @@ export interface ContentConfig {
       description: string;
     }>;
   };
-  
+
   // Seção de Prova Social
   socialProof: {
     title: string;
@@ -100,7 +100,7 @@ export interface ContentConfig {
       label: string;
     }>;
   };
-  
+
   // Seção Sobre
   about: {
     title: string;
@@ -112,13 +112,13 @@ export interface ContentConfig {
       description: string;
     }>;
   };
-  
+
   // Seção de Contato
   contact: {
     title: string;
     subtitle: string;
     description: string;
-    source: string; 
+    source: string;
     form: {
       fields: Array<{
         name: string;
@@ -131,8 +131,8 @@ export interface ContentConfig {
       successMessage: string;
       errorMessage: string;
       submittingText: string;
-      successTitle: string;  
-      errorTitle: string;    
+      successTitle: string;
+      errorTitle: string;
     };
     info: {
       email?: string;
@@ -143,7 +143,7 @@ export interface ContentConfig {
       addressLabel: string;
     };
   };
-  
+
   // Rodapé
   footer: {
     description: string;
@@ -161,25 +161,32 @@ export interface ContentConfig {
       icon: string;
     }>;
     copyright: string;
-    socialTitle: string; 
+    socialTitle: string;
   };
 }
 
 /**
  * CONTEÚDO PADRÃO
- * 
+ *
  * Configuração padrão do conteúdo. Modifique os valores abaixo
  * para personalizar o conteúdo da sua landing page.
  */
 export const defaultContent: ContentConfig = {
   site: {
     title: 'Criação de Landing Pages Profissionais',
-    description: 'Landing pages rápidas, modernas e pensadas para conversão. Mostre sua ideia com clareza e conquiste mais clientes.',
-    keywords: ['landing page', 'site profissional', 'conversão', 'marketing digital', 'negócios online'],
+    description:
+      'Landing pages rápidas, modernas e pensadas para conversão. Mostre sua ideia com clareza e conquiste mais clientes.',
+    keywords: [
+      'landing page',
+      'site profissional',
+      'conversão',
+      'marketing digital',
+      'negócios online',
+    ],
     author: 'Luis Henrique',
     url: 'https://seusite.com',
   },
-  
+
   header: {
     logo: {
       text: 'HenriqueDev',
@@ -196,11 +203,12 @@ export const defaultContent: ContentConfig = {
       href: '#contact',
     },
   },
-  
+
   hero: {
     title: 'Sua ideia merece uma página que vende',
     subtitle: 'Landing pages que convertem de verdade',
-    description: 'Eu crio landing pages claras, rápidas e funcionais. Sem promessas milagrosas — apenas design estratégico para atrair, engajar e gerar resultados reais.',
+    description:
+      'Eu crio landing pages claras, rápidas e funcionais. Sem promessas milagrosas — apenas design estratégico para atrair, engajar e gerar resultados reais.',
     primaryCta: {
       text: 'Quero minha landing page',
       href: '#contact',
@@ -210,20 +218,22 @@ export const defaultContent: ContentConfig = {
       href: '#about',
     },
   },
-  
+
   problemSolution: {
     title: 'O problema e a solução',
     subtitle: 'Por que uma landing page profissional faz diferença',
     problem: {
       title: 'O Problema',
-      description: 'Muitos negócios perdem clientes porque usam páginas lentas, confusas ou cheias de distrações. Resultado: tráfego sem conversão.',
+      description:
+        'Muitos negócios perdem clientes porque usam páginas lentas, confusas ou cheias de distrações. Resultado: tráfego sem conversão.',
     },
     solution: {
       title: 'A Solução',
-      description: 'Uma landing page bem estruturada, com copy clara e design focado em resultado. É isso que eu entrego.',
+      description:
+        'Uma landing page bem estruturada, com copy clara e design focado em resultado. É isso que eu entrego.',
     },
   },
-  
+
   benefits: {
     title: 'Benefícios de ter sua landing page',
     subtitle: 'Mais que aparência, é estratégia',
@@ -244,28 +254,29 @@ export const defaultContent: ContentConfig = {
         description: 'Funciona em qualquer dispositivo, sem susto.',
       },
       {
-        icon: 'Search', 
+        icon: 'Search',
         title: 'SEO Básico Incluído',
         description: 'Preparada para ser encontrada no Google.',
       },
       {
-        icon: 'Palette', 
+        icon: 'Palette',
         title: 'Personalização Completa',
         description: 'Cada projeto é único, feito sob medida para você.',
       },
     ],
   },
-  
+
   socialProof: {
     title: 'O que dizem meus clientes',
     subtitle: 'Resultados falam mais que palavras',
-    trustSealText: 'Junte-se a milhares de clientes satisfeitos', 
+    trustSealText: 'Junte-se a milhares de clientes satisfeitos',
     testimonials: [
       {
         name: 'Maria Silva',
         role: 'CEO',
         company: 'TechCorp',
-        content: 'Minha landing page começou a gerar leads já na primeira semana. Trabalho rápido e direto.',
+        content:
+          'Minha landing page começou a gerar leads já na primeira semana. Trabalho rápido e direto.',
         rating: 5,
       },
       {
@@ -290,11 +301,12 @@ export const defaultContent: ContentConfig = {
       { value: '300%', label: 'Aumento de Produtividade' },
     ],
   },
-  
+
   about: {
     title: 'Quem sou eu',
     subtitle: 'De código a conversão',
-    description: 'Sou desenvolvedor full stack especializado em criação de landing pages. Meu foco é entregar páginas rápidas, modernas e objetivas, sempre com transparência e sem enrolação.',
+    description:
+      'Sou desenvolvedor full stack especializado em criação de landing pages. Meu foco é entregar páginas rápidas, modernas e objetivas, sempre com transparência e sem enrolação.',
     features: [
       {
         title: 'Experiência real',
@@ -310,12 +322,12 @@ export const defaultContent: ContentConfig = {
       },
     ],
   },
-  
+
   contact: {
     title: 'Vamos conversar?',
     subtitle: 'Sua landing page começa aqui',
     description: 'Entre em contato e vamos tirar sua ideia do papel.',
-    source: 'Landing Page Template', 
+    source: 'Landing Page Template',
     form: {
       fields: [
         {
@@ -350,19 +362,19 @@ export const defaultContent: ContentConfig = {
       submitText: 'Enviar',
       successMessage: 'Obrigado! Vou responder em breve.',
       errorMessage: 'Ocorreu um erro. Tente novamente.',
-      submittingText: 'Enviando...', 
-      successTitle: 'Sucesso!',       
-      errorTitle: 'Erro!',            
+      submittingText: 'Enviando...',
+      successTitle: 'Sucesso!',
+      errorTitle: 'Erro!',
     },
     info: {
-      emailLabel: 'E-mail:',          
-      phoneLabel: 'Telefone:',        
-      addressLabel: 'Endereço:',      
+      emailLabel: 'E-mail:',
+      phoneLabel: 'Telefone:',
+      addressLabel: 'Endereço:',
       email: 'lh5818181@gmail.com',
-      phone: '(81) 99999-9143',     
+      phone: '(81) 99999-9143',
     },
   },
-  
+
   footer: {
     description: 'Landing pages que unem design, performance e resultado.',
     links: [
@@ -392,11 +404,15 @@ export const defaultContent: ContentConfig = {
       },
     ],
     social: [
-      { platform: 'LinkedIn', url: 'https://www.linkedin.com/in/luis-henrique-76245231a/', icon: 'Linkedin' },
+      {
+        platform: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/luis-henrique-76245231a/',
+        icon: 'Linkedin',
+      },
       { platform: 'Instagram', url: 'https://instagram.com', icon: 'Instagram' },
       { platform: 'Facebook', url: 'https://facebook.com', icon: 'Facebook' },
     ],
     copyright: '© 2024 Luis Henrique Vieira de Oliveira. Todos os direitos reservados.',
-    socialTitle: 'Siga-nos', 
+    socialTitle: 'Siga-nos',
   },
 };

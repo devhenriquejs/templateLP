@@ -1,9 +1,9 @@
 /**
  * COMPONENTE SOCIAL PROOF
- * 
+ *
  * Seção que apresenta depoimentos de clientes e estatísticas
  * para construir credibilidade e confiança.
- * 
+ *
  * Funcionalidades:
  * - Depoimentos configuráveis
  * - Estatísticas destacadas
@@ -11,7 +11,6 @@
  * - Layout responsivo
  * - Animações suaves
  */
-
 
 import { Star, Quote } from 'lucide-react';
 
@@ -39,7 +38,7 @@ import {
   StatLabel,
   TrustSeal,
   TrustSealIcon,
-  TrustSealText
+  TrustSealText,
 } from './styles';
 
 /**
@@ -69,7 +68,7 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
 
 /**
  * Componente SocialProof
- * 
+ *
  * @param content - Configuração de conteúdo da prova social
  */
 function SocialProof({ content }: SocialProofProps) {
@@ -77,47 +76,37 @@ function SocialProof({ content }: SocialProofProps) {
     <StyledSection id="social-proof">
       <SectionContainer>
         {/* Título da seção */}
-        <SectionTitle className="animate-fade-in">
-          {content.title}
-        </SectionTitle>
-        
+        <SectionTitle className="animate-fade-in">{content.title}</SectionTitle>
+
         {/* Subtítulo da seção */}
         {content.subtitle && (
-          <SectionSubtitle className="animate-fade-in">
-            {content.subtitle}
-          </SectionSubtitle>
+          <SectionSubtitle className="animate-fade-in">{content.subtitle}</SectionSubtitle>
         )}
-        
+
         {/* Container dos depoimentos */}
         <TestimonialsContainer>
           {content.testimonials.map((testimonial, index) => (
-            <TestimonialCard 
-              key={index}
-              className="animate-fade-in"
-              $isHighlighted={index === 0}
-            >
+            <TestimonialCard key={index} className="animate-fade-in" $isHighlighted={index === 0}>
               <TestimonialContent>
                 {/* Ícone de aspas */}
                 <TestimonialQuote>
                   <Quote size={24} />
                 </TestimonialQuote>
-                
+
                 {/* Conteúdo do depoimento */}
                 <p>{testimonial.content}</p>
-                
+
                 {/* Avaliação com estrelas */}
-                {testimonial.rating && (
-                  <StarRating rating={testimonial.rating} />
-                )}
+                {testimonial.rating && <StarRating rating={testimonial.rating} />}
               </TestimonialContent>
-              
+
               {/* Informações do autor */}
               <TestimonialAuthor>
                 {/* Avatar do autor */}
                 <AuthorAvatar>
                   {testimonial.avatar ? (
-                    <img 
-                      src={testimonial.avatar} 
+                    <img
+                      src={testimonial.avatar}
                       alt={`Foto de ${testimonial.name}`}
                       loading="lazy"
                     />
@@ -125,20 +114,18 @@ function SocialProof({ content }: SocialProofProps) {
                     <div>{testimonial.name.charAt(0)}</div>
                   )}
                 </AuthorAvatar>
-                
+
                 {/* Informações textuais */}
                 <AuthorInfo>
                   <AuthorName>{testimonial.name}</AuthorName>
                   <AuthorRole>{testimonial.role}</AuthorRole>
-                  {testimonial.company && (
-                    <AuthorCompany>{testimonial.company}</AuthorCompany>
-                  )}
+                  {testimonial.company && <AuthorCompany>{testimonial.company}</AuthorCompany>}
                 </AuthorInfo>
               </TestimonialAuthor>
             </TestimonialCard>
           ))}
         </TestimonialsContainer>
-        
+
         {/* Estatísticas (se disponíveis) */}
         {content.stats && content.stats.length > 0 && (
           <StatsContainer className="animate-fade-in">
@@ -150,15 +137,13 @@ function SocialProof({ content }: SocialProofProps) {
             ))}
           </StatsContainer>
         )}
-        
+
         {/* Selo de confiança */}
         <TrustSeal className="animate-scale-in">
           <TrustSealIcon>
             <Star size={24} fill="#F59E0B" color="#F59E0B" />
           </TrustSealIcon>
-          <TrustSealText>
-            {content.trustSealText}
-          </TrustSealText>
+          <TrustSealText>{content.trustSealText}</TrustSealText>
         </TrustSeal>
       </SectionContainer>
     </StyledSection>
@@ -166,4 +151,3 @@ function SocialProof({ content }: SocialProofProps) {
 }
 
 export default SocialProof;
-
