@@ -1,5 +1,5 @@
 /**
- * COMPONENTE BENEFITS ORBIT
+ * COMPONENTE BENEFITS
  *
  * Seção que apresenta os benefícios do produto/serviço em um layout
  * de grid responsivo, focado na simplicidade e funcionalidade.
@@ -28,9 +28,9 @@ import {
 } from './styles-simple';
 
 /**
- * Props do componente BenefitsOrbit
+ * Props do componente Benefits
  */
-interface BenefitsOrbitProps {
+interface BenefitsProps {
   content: ContentConfig['benefits'];
 }
 
@@ -51,11 +51,11 @@ const BENEFIT_ICONS: Record<string, LucideIcon> = {
 };
 
 /**
- * Componente BenefitsOrbit
+ * Componente Benefits
  *
  * @param content - Configuração de conteúdo dos benefícios
  */
-function BenefitsOrbit({ content }: BenefitsOrbitProps) {
+function Benefits({ content }: BenefitsProps) {
   return (
     <StyledSection id="benefits">
       <SectionContainer>
@@ -84,4 +84,4 @@ function BenefitsOrbit({ content }: BenefitsOrbitProps) {
   );
 }
 
-export default BenefitsOrbit;
+export default Benefits;

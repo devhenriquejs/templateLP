@@ -11,7 +11,7 @@ import styled from 'styled-components';
  * Seção principal
  */
 export const StyledSection = styled.section`
-  min-height: 100vh;
+  min-height: 100dvh;
   background: ${({ theme }) => theme.colors.gradients.hero};
   color: ${({ theme }) => theme.colors.neutral.white};
   padding: ${({ theme }) => theme.spacing['6xl']} 0 ${({ theme }) => theme.spacing['4xl']};

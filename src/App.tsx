@@ -1,33 +1,20 @@
-/**
- * COMPONENTE PRINCIPAL DA APLICAÇÃO
- *
- * Este é o componente raiz da landing page template.
- * Ele organiza todos os componentes de seção e aplica o tema global.
- *
- * Para personalizar:
- * 1. Modifique a ordem das seções conforme necessário
- * 2. Adicione ou remova seções baseado no seu projeto
- * 3. Configure o tema no arquivo src/config/theme.ts
- * 4. Ajuste o conteúdo no arquivo src/config/content.ts
- */
-
+import { lazy, Suspense } from 'react';
 import { ThemeProvider } from 'styled-components';
 
-// Importa configurações do template
 import { defaultTheme } from './config/theme';
 import { defaultContent } from './config/content';
-
-// Importa estilos globais
 import { GlobalStyles, AppContainer, MainContent } from './styles/GlobalStyles';
 
-// Importa componentes das seções
+// Estes dois continuam sendo importados normalmente (pois aparecem na primeira tela)
 import Header from './components/Header';
 import ProblemSolution from './components/ProblemSolution';
-import BenefitsOrbit from './components/Benefits';
-import SocialProof from './components/SocialProof';
-import AboutSection from './components/AboutSection';
-import FormContact from './components/FormContact';
-import Footer from './components/Footer';
+
+// O RESTO vira importação dinâmica (Lazy)
+const Benefits = lazy(() => import('./components/Benefits'));
+const SocialProof = lazy(() => import('./components/SocialProof'));
+const AboutSection = lazy(() => import('./components/AboutSection'));
+const FormContact = lazy(() => import('./components/FormContact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 /**
  * Componente principal da aplicação
@@ -56,27 +43,25 @@ function App() {
 
         {/* Conteúdo principal da página */}
         <MainContent id="main-content">
-          {/* Seção Hero - primeira impressão */}
+          {/* Seção Hero - Carrega imediatamente */}
           <ProblemSolution
             content={defaultContent.hero}
             problemSolution={defaultContent.problemSolution}
           />
 
-          {/* Seção de Benefícios - pontos fortes do produto/serviço */}
-          <BenefitsOrbit content={defaultContent.benefits} />
-
-          {/* Seção de Prova Social - depoimentos e estatísticas */}
-          <SocialProof content={defaultContent.socialProof} />
-
-          {/* Seção Sobre - informações da empresa */}
-          <AboutSection content={defaultContent.about} />
-
-          {/* Seção de Contato - formulário e informações */}
-          <FormContact content={defaultContent.contact} />
+          {/* O resto fica dentro do Suspense para não travar a tela */}
+          <Suspense fallback={<div style={{ padding: '4rem', textAlign: 'center' }}>Carregando...</div>}>
+            <Benefits content={defaultContent.benefits} />
+            <SocialProof content={defaultContent.socialProof} />
+            <AboutSection content={defaultContent.about} />
+            <FormContact content={defaultContent.contact} />
+          </Suspense>
         </MainContent>
 
-        {/* Rodapé com links e informações adicionais */}
-        <Footer content={defaultContent.footer} />
+        {/* Rodapé com links e informações adicionais (também protegido pelo Suspense) */}
+        <Suspense fallback={<div style={{ height: '200px', background: '#334155' }}></div>}>
+          <Footer content={defaultContent.footer} />
+        </Suspense>
       </AppContainer>
     </ThemeProvider>
   );
