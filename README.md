@@ -217,7 +217,7 @@ Seção hero combinada com problema/solução:
 - Apresentação visual problema vs solução
 - Imagens opcionais
 
-### Benefits 
+### Benefits
 
 Seção de benefícios com layout em órbita:
 

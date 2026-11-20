@@ -12,8 +12,7 @@
  * - Design responsivo
  */
 
-import * as LucideIcons from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import { Linkedin, Instagram, Facebook, ExternalLink, type LucideIcon } from 'lucide-react';
 
 // Importa tipos e estilos
 import type { ContentConfig } from '../../types';
@@ -46,11 +45,14 @@ interface FooterProps {
  * Função para obter ícone do Lucide React
  */
 const getIcon = (iconName: string, size: number = 20) => {
-  // Dizemos ao TS que isso é um dicionário de ícones
-  const IconsDict = LucideIcons as unknown as Record<string, LucideIcon>;
-  const IconComponent = IconsDict[iconName];
+  const IconComponent = SOCIAL_ICONS[iconName] || ExternalLink;
+  return <IconComponent size={size} />;
+};
 
-  return IconComponent ? <IconComponent size={size} /> : <LucideIcons.ExternalLink size={size} />;
+const SOCIAL_ICONS: Record<string, LucideIcon> = {
+  Linkedin,
+  Instagram,
+  Facebook,
 };
 
 /**
@@ -110,7 +112,7 @@ function Footer({ content }: FooterProps) {
                         aria-label={`Navegar para ${link.label}`}
                       >
                         {link.label}
-                        {link.external && <LucideIcons.ExternalLink size={14} />}
+                        <ExternalLink size={14} />
                       </FooterLink>
                     </li>
                   ))}

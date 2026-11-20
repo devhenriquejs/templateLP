@@ -23,7 +23,7 @@ import { GlobalStyles, AppContainer, MainContent } from './styles/GlobalStyles';
 // Importa componentes das seções
 import Header from './components/Header';
 import ProblemSolution from './components/ProblemSolution';
-import BenefitsOrbit from './components/BenefitsOrbit';
+import BenefitsOrbit from './components/Benefits';
 import SocialProof from './components/SocialProof';
 import AboutSection from './components/AboutSection';
 import FormContact from './components/FormContact';

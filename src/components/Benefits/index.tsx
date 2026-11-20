@@ -11,7 +11,7 @@
  * - Configuração via props
  */
 
-import * as LucideIcons from 'lucide-react';
+import { Zap, Shield, TrendingUp, Search, Palette, Star, type LucideIcon } from 'lucide-react';
 
 // Importa tipos e estilos do arquivo simplificado
 import type { ContentConfig } from '../../types';
@@ -25,7 +25,7 @@ import {
   BenefitTitle,
   BenefitDescription,
   BenefitsGrid,
-} from './styles-simple'; // Importa do arquivo de estilos simplificado
+} from './styles-simple';
 
 /**
  * Props do componente BenefitsOrbit
@@ -38,8 +38,16 @@ interface BenefitsOrbitProps {
  * Função para obter ícone do Lucide React
  */
 const getIcon = (iconName: string, size: number = 28) => {
-  const IconComponent = (LucideIcons as any)[iconName];
-  return IconComponent ? <IconComponent size={size} /> : <LucideIcons.Star size={size} />;
+  const IconComponent = BENEFIT_ICONS[iconName] || Star;
+  return <IconComponent size={size} />;
+};
+
+const BENEFIT_ICONS: Record<string, LucideIcon> = {
+  Zap,
+  Shield,
+  TrendingUp,
+  Search,
+  Palette,
 };
 
 /**
