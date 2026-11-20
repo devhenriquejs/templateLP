@@ -14,6 +14,7 @@
 
 
 import * as LucideIcons from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 // Importa tipos e estilos
 import type { ContentConfig } from '../../types';
@@ -46,8 +47,13 @@ interface FooterProps {
  * Função para obter ícone do Lucide React
  */
 const getIcon = (iconName: string, size: number = 20) => {
-  const IconComponent = (LucideIcons as any)[iconName];
-  return IconComponent ? <IconComponent size={size} /> : <LucideIcons.ExternalLink size={size} />;
+  // Dizemos ao TS que isso é um dicionário de ícones
+  const IconsDict = LucideIcons as unknown as Record<string, LucideIcon>;
+  const IconComponent = IconsDict[iconName];
+  
+  return IconComponent 
+    ? <IconComponent size={size} /> 
+    : <LucideIcons.ExternalLink size={size} />;
 };
 
 /**
@@ -124,7 +130,7 @@ function Footer({ content }: FooterProps) {
           {content.social && content.social.length > 0 && (
             <FooterSocial>
               <SocialTitle>
-                Siga-nos
+                {content.socialTitle}
               </SocialTitle>
               
               <SocialLinks>

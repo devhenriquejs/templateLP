@@ -157,7 +157,7 @@ function SocialProof({ content }: SocialProofProps) {
             <Star size={24} fill="#F59E0B" color="#F59E0B" />
           </TrustSealIcon>
           <TrustSealText>
-            Junte-se a milhares de clientes satisfeitos
+            {content.trustSealText}
           </TrustSealText>
         </TrustSeal>
       </SectionContainer>

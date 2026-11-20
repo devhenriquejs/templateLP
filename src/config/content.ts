@@ -86,6 +86,7 @@ export interface ContentConfig {
   socialProof: {
     title: string;
     subtitle: string;
+    trustSealText: string;
     testimonials: Array<{
       name: string;
       role: string;
@@ -117,6 +118,7 @@ export interface ContentConfig {
     title: string;
     subtitle: string;
     description: string;
+    source: string; 
     form: {
       fields: Array<{
         name: string;
@@ -128,11 +130,17 @@ export interface ContentConfig {
       submitText: string;
       successMessage: string;
       errorMessage: string;
+      submittingText: string;
+      successTitle: string;  
+      errorTitle: string;    
     };
     info: {
       email?: string;
       phone?: string;
       address?: string;
+      emailLabel: string;
+      phoneLabel: string;
+      addressLabel: string;
     };
   };
   
@@ -153,6 +161,7 @@ export interface ContentConfig {
       icon: string;
     }>;
     copyright: string;
+    socialTitle: string; 
   };
 }
 
@@ -235,12 +244,12 @@ export const defaultContent: ContentConfig = {
         description: 'Funciona em qualquer dispositivo, sem susto.',
       },
       {
-        icon: 'Users',
+        icon: 'Search', 
         title: 'SEO Básico Incluído',
         description: 'Preparada para ser encontrada no Google.',
       },
-            {
-        icon: 'Users',
+      {
+        icon: 'Palette', 
         title: 'Personalização Completa',
         description: 'Cada projeto é único, feito sob medida para você.',
       },
@@ -250,6 +259,7 @@ export const defaultContent: ContentConfig = {
   socialProof: {
     title: 'O que dizem meus clientes',
     subtitle: 'Resultados falam mais que palavras',
+    trustSealText: 'Junte-se a milhares de clientes satisfeitos', 
     testimonials: [
       {
         name: 'Maria Silva',
@@ -305,6 +315,7 @@ export const defaultContent: ContentConfig = {
     title: 'Vamos conversar?',
     subtitle: 'Sua landing page começa aqui',
     description: 'Entre em contato e vamos tirar sua ideia do papel.',
+    source: 'Landing Page Template', 
     form: {
       fields: [
         {
@@ -339,10 +350,16 @@ export const defaultContent: ContentConfig = {
       submitText: 'Enviar',
       successMessage: 'Obrigado! Vou responder em breve.',
       errorMessage: 'Ocorreu um erro. Tente novamente.',
+      submittingText: 'Enviando...', 
+      successTitle: 'Sucesso!',       
+      errorTitle: 'Erro!',            
     },
     info: {
+      emailLabel: 'E-mail:',          
+      phoneLabel: 'Telefone:',        
+      addressLabel: 'Endereço:',      
       email: 'lh5818181@gmail.com',
-      phone: '81 9 9942-9143',
+      phone: '(81) 99999-9143',     
     },
   },
   
@@ -380,6 +397,6 @@ export const defaultContent: ContentConfig = {
       { platform: 'Facebook', url: 'https://facebook.com', icon: 'Facebook' },
     ],
     copyright: '© 2024 Luis Henrique Vieira de Oliveira. Todos os direitos reservados.',
+    socialTitle: 'Siga-nos', 
   },
 };
-

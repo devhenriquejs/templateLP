@@ -110,6 +110,8 @@ interface FeedbackModalProps {
   isOpen: boolean;
   type: 'success' | 'error';
   message: string;
+  successTitle: string;
+  errorTitle: string;
   onClose: () => void;
 }
 
@@ -117,8 +119,13 @@ const FeedbackModal: FC<FeedbackModalProps> = ({
   isOpen, 
   type, 
   message, 
+  successTitle,
+  errorTitle,
   onClose 
 }) => {
+  <ModalTitle>
+    {type === 'success' ? successTitle : errorTitle}
+  </ModalTitle>
   if (!isOpen) return null;
 
   return (
@@ -207,7 +214,7 @@ if (!webhookUrl) {
         body: JSON.stringify({
           ...(data as Record<string, unknown>),
           timestamp: new Date().toISOString(),
-          source: 'Landing Page Template'
+          source: content.source,
         }),
       });
 
@@ -322,7 +329,7 @@ if (!webhookUrl) {
                   📧
                 </ContactInfoIcon>
                 <ContactInfoText>
-                  <strong>E-mail:</strong><br />
+                <strong>{content.info.emailLabel}</strong><br />
                   <a href={`mailto:${content.info.email}`}>
                     {content.info.email}
                   </a>
@@ -336,7 +343,7 @@ if (!webhookUrl) {
                   📞
                 </ContactInfoIcon>
                 <ContactInfoText>
-                  <strong>Telefone:</strong><br />
+                  <strong>{content.info.phoneLabel}</strong><br />
                   <a href={`tel:${content.info.phone}`}>
                     {content.info.phone}
                   </a>
@@ -350,7 +357,7 @@ if (!webhookUrl) {
                   📍
                 </ContactInfoIcon>
                 <ContactInfoText>
-                  <strong>Endereço:</strong><br />
+                  <strong>{content.info.addressLabel}</strong><br />
                   {content.info.address}
                 </ContactInfoText>
               </ContactInfoItem>
@@ -367,7 +374,7 @@ if (!webhookUrl) {
                 disabled={isSubmitting}
                 aria-label={content.form.submitText}
               >
-                {isSubmitting ? 'Enviando...' : content.form.submitText}
+                {isSubmitting ? content.form.submittingText : content.form.submitText}
                 <SubmitButtonIcon $isLoading={isSubmitting}>
                   <Send size={20} />
                 </SubmitButtonIcon>
@@ -381,6 +388,8 @@ if (!webhookUrl) {
           isOpen={modalState.isOpen}
           type={modalState.type}
           message={modalState.message}
+          successTitle={content.form.successTitle} 
+          errorTitle={content.form.errorTitle}
           onClose={closeModal}
         />
       </SectionContainer>

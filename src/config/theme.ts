@@ -151,7 +151,7 @@ export interface Theme {
 export const defaultTheme: Theme = {
   colors: {
     primary: {
-      main: '#3B82F6',      // Azul principal
+      main: '#10B981',      // Verde principal
       light: '#60A5FA',     // Azul claro
       dark: '#1D4ED8',      // Azul escuro
       contrast: '#FFFFFF',  // Branco para contraste
