@@ -106,7 +106,7 @@ Para integrar com seu webhook (Zapier, Make.com, etc.):
 
 1. Crie uma variável de ambiente:
    ```bash
-   echo "REACT_APP_WEBHOOK_URL=https://sua-url-webhook.com" > .env
+   echo "VITE_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/SEU_ID/" > .env
    ```
 
 2. O formulário enviará automaticamente os dados para essa URL.

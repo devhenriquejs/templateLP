@@ -313,12 +313,19 @@ const createValidationSchema = (fields) => {
   fields.forEach(field => {
     let fieldSchema;
     
-    switch (field.type) {
+        switch (field.type) {
       case 'email':
         fieldSchema = z.string().email('E-mail inválido');
         break;
       case 'tel':
-        fieldSchema = z.string().regex(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, 'Telefone inválido');
+        // Validando pela quantidade de dígitos (aceita 10 ou 11 dígitos)
+        fieldSchema = z.string().refine(
+          (v) => {
+            const digits = v.replace(/\D/g, '');
+            return digits.length === 10 || digits.length === 11;
+          },
+          'Telefone inválido (informe DDD + número)'
+        );
         break;
       case 'url':
         fieldSchema = z.string().url('URL inválida');
@@ -389,7 +396,7 @@ Adicione no `index.html`:
 2. **Configurar no Template**:
    ```bash
    # .env
-   REACT_APP_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/SEU_ID/
+   VITE_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/SEU_ID/
    ```
 
 ### Make.com (Integromat)
@@ -403,7 +410,7 @@ Adicione no `index.html`:
 2. **Configurar**:
    ```bash
    # .env
-   REACT_APP_WEBHOOK_URL=https://hook.make.com/SEU_ID
+   VITE_WEBHOOK_URL=https://hook.make.com/SEU_ID
    ```
 
 ### Google Analytics
@@ -489,7 +496,7 @@ Adicione no `index.html`:
 ```typescript
 // Adicione logs para debug
 console.log('Dados do formulário:', data);
-console.log('URL do webhook:', process.env.REACT_APP_WEBHOOK_URL);
+console.log('URL do webhook:', import.meta.env.VITE_WEBHOOK_URL);
 ```
 
 ## 📚 Recursos Adicionais
